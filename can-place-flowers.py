@@ -7,11 +7,12 @@ class Solution:
         for i in range(len(flowerbed)):
             if n==0:
                 return True
-            if flowerbed[i] == 0:
-                #if first element or current's prev element ==0 AND last or current's+1 element ==0
-                if (i == 0 or flowerbed[i - 1] == 0) and (i == len(flowerbed) - 1 or flowerbed[i + 1] == 0):
-                    flowerbed[i] = 1
-                    n-=1
+            #if first element or current's prev element ==0 AND current elemen ==0 AND last or current's+1 element ==0 
+            if ((i==0 or flowerbed[i-1]==0)) and (flowerbed[i]==0) and ((i==len(flowerbed)-1 or flowerbed[i+1]==0)):
+                flowerbed[i] = 1
+                n-=1
+                if n==0:
+                    return True
         return False
     
 class mergeAlterTest(unittest.TestCase):
@@ -26,6 +27,6 @@ class mergeAlterTest(unittest.TestCase):
         self.assertEqual(False, Solution.canPlaceFlowers(flowerbed,n))
     
     def test_case_3(self):
-        flowerbed = [1,0,0,0,1,0,0,0,0,1,0,0,0,0,0]
-        n=5
-        self.assertEqual(False, Solution.canPlaceFlowers(flowerbed,n))
+        flowerbed = [1,0,0,0,1,0,0]
+        n=2
+        self.assertEqual(True, Solution.canPlaceFlowers(flowerbed,n))
