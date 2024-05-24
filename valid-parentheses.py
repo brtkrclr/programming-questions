@@ -9,7 +9,7 @@ class Solution:
         for i in s:
             if i in paranthesis:
                 arr.append(i)
-            elif  len(arr)==0 or paranthesis[arr.pop()] != i:
+            elif  len(arr)==0 or paranthesis[arr.pop()] != i: #ex: paranthesis["("] == ")"  
                 return False
         return len(arr)==0
     
